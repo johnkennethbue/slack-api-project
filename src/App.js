@@ -1,9 +1,11 @@
-import './App.css';
-
+import "./App.css";
+import Signin from "./components/Signin";
 function App() {
   return (
-    <div>Sample</div>
-  )
+    <div className="container">
+      <Signin />
+    </div>
+  );
 }
 
 export default App;
