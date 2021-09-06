@@ -4,7 +4,15 @@ import SignUpForm from "./components/SignUpForm";
 import Homepage from "./components/Homepage"
 
 function App() {
-  return null;
+  return (
+    <div className="container">
+      <Switch>
+        <Route path="/signin" component={Signin} />
+
+        <Route path="/signup" component={SignUpForm} />
+      </Switch>
+    </div>
+  );
 }
 
 export default App;
