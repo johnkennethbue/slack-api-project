@@ -12,7 +12,7 @@ html {
 
 body {
   font-family: "Baloo Da 2";
-  overflow: hidden;
+  overflow: auto;
 }
 .container {
   width: 100%;

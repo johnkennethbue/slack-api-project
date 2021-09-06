@@ -93,8 +93,8 @@ function Homepage() {
                 <div className="border px-4 h-16 bg-pink-600 gap-6">
                     <input
                         className="border w-11/12 mx-2 h-10" 
-                        type="textarea"
-                        value="Enter a message"
+                        type="text"
+                        placeholder="Enter a message"
                     />
                     <button className="px-4 py-2 mt-2 bg-pink-400 border rounded-md">
                         <svg xmlns="http://www.w3.org/2000/svg" className=" m-0 h-5 w-5 transform rotate-90" viewBox="0 0 20 20" fill="currentColor">
