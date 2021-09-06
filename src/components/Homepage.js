@@ -2,8 +2,8 @@ import React from 'react'
 
 function Homepage() {
     return (
-        <section className="grid grid-cols-12 grid-rows-auto">
-            <div className="border col-span-3 flex gap-2 p-4 items-center justify-around text-white bg-pink-600">
+        <section className="grid grid-cols-12 grid-rows-auto overflow-hidden h-screen w-full ml-28">
+            <div className="border col-span-3 flex gap-2 p-4 items-center justify-around text-white bg-pink-700">
                 <div>
                     <button className="m-0">
                         <svg xmlns="http://www.w3.org/2000/svg" className="h-7 w-7" viewBox="0 0 20 20" fill="currentColor">
@@ -26,7 +26,7 @@ function Homepage() {
                     </button>
                 </div>
             </div>
-            <div className="border col-span-9 flex items-center gap-2 p-4 justify-between text-white bg-pink-600">
+            <div className="border col-span-9 flex items-center gap-2 p-4 justify-between text-white bg-pink-700">
                 <div className="flex gap-4 items-center">
                     <div>
                         <svg xmlns="http://www.w3.org/2000/svg" className="h-12 w-12" viewBox="0 0 20 20" fill="currentColor">
@@ -49,7 +49,7 @@ function Homepage() {
                 </div>
             </div>
             <div className=" border grid grid-rows-auto col-span-3 row-start-2 bg-red-50">
-                        <div className=" border m-0 row-start-1 h-1/2 bg-pink-600 text-white">
+                        <div className=" border m-0 row-start-1 h-1/2 bg-pink-700 text-white">
                             <div className="border">Channels</div>
                                 <div className="flex p-2 gap-2">
                                     <div className="p-2">
@@ -75,7 +75,7 @@ function Homepage() {
                                     </div>                
                                 </div>
                         </div>
-                        <div className="border row-start-2 bg-pink-600 text-white -mt-64">
+                        <div className="border row-start-2 bg-pink-700 text-white -mt-64">
                                 <div className="border">Direct Messages</div>
                                 <div>
                                     <div className="py-4 border ">user_1</div>
@@ -86,11 +86,11 @@ function Homepage() {
                                 </div>
                         </div>
             </div>
-            <div className="border grid h-screen col-span-9 flex">
+            <div className="border grid h-screen w-auto col-span-9 flex">
                 <div className=" row-span-6 p-4 h-full">
                     CHATBOX
                 </div>
-                <div className="border px-4 h-16 bg-pink-600 gap-6">
+                <div className="border px-4 h-16 bg-pink-700 gap-6">
                     <input
                         className="border w-11/12 mx-2 h-10" 
                         type="text"
