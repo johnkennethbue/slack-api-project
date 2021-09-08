@@ -1,6 +1,8 @@
-import { useState } from "react";
+import { useState, useContext, useCallback } from "react";
 import { set } from "react-hook-form";
 import Swal from "sweetalert2";
+import { Context } from "../../App";
+import { useHistory } from "react-router";
 
 const endPoint = "http://206.189.91.54/api/v1/auth/sign_in";
 const credentials = {
@@ -9,6 +11,14 @@ const credentials = {
 };
 
 export default function useSignin() {
+const history = useHistory();
+const loggedIn = useCallback(() => history.push('/home'), [history]);
+
+   const { 
+    setUserHeaders,
+    setLoggedInUser,
+   } = useContext(Context);
+
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
 
@@ -37,12 +47,14 @@ export default function useSignin() {
         const client = response.headers.get("client");
         const expiry = response.headers.get("expiry");
 
+        setUserHeaders(response.headers);
+
         Swal.fire({
           icon: "success",
           title: "Sign in Success",
         });
-
         console.log(response, accessToken, uid, client, expiry);
+        loggedIn();
       } else {
         setError("Unknown error occured");
       }

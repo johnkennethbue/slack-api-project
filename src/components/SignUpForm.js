@@ -60,19 +60,19 @@ const signUpFormSubmit = (data) => {
   
               <h1 class = "text-2xl text-center ">Sign up, it's free!</h1>
               <div class = "flex flex-col justify-center items-center">
-                      <input {...register("email")}
+                      <input {...register("email", { required: "Email is required" })}
                       class =  "w-full mt-4 content-center text-base px-4 py-2 border-b-2 rounded-xl border-gray-500 focus:outline-none focus:border-pink-600"                        
                       type = "email"
                       placeholder = "Set E-mail"
                       required
                       />
-                      <input {...register("password")}
+                      <input {...register("password", { required: "Password is required" })}
                       class =  "w-full mt-4 content-center  text-base px-4 py-2 border-b-2 rounded-xl border-gray-500 focus:outline-none focus:border-pink-600"                        
                       type = "password"
                       placeholder = "Set Password (minimum 6 characters)"
                       required
                       />
-                      <input {...register("password_confirmation")}
+                      <input {...register("password_confirmation", { required: "This is required" })}
                       class =  "w-full mt-4 content-center  text-base px-4 py-2 border-b-2 rounded-xl border-gray-500 focus:outline-none focus:border-pink-600"                        
                       type = "password"
                       placeholder = "Confirm Password" 
