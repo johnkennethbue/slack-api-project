@@ -1,7 +1,14 @@
 import React from 'react'
+import { useContext } from 'react';
 import GetMessageChannel from './getmessage-channel'
+import { Context } from '../App'
 
 function Homepage() {
+    const { 
+        userHeaders,
+       } = useContext(Context);
+
+       const userName = userHeaders.get("uid")
     return (
         <section className="grid grid-cols-12 grid-rows-auto overflow-hidden h-screen w-full ml-28">
             <div className="border col-span-3 flex gap-2 p-4 items-center justify-around text-white bg-pink-700">
@@ -34,7 +41,7 @@ function Homepage() {
                             <path fillRule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-6-3a2 2 0 11-4 0 2 2 0 014 0zm-2 4a5 5 0 00-4.546 2.916A5.986 5.986 0 0010 16a5.986 5.986 0 004.546-2.084A5 5 0 0010 11z" clipRule="evenodd" />
                         </svg>
                     </div>
-                    <div>username/name HERE<br /><span className="text-gray-100">last login date, time/ last user session</span></div>
+                    <div>{userName}<br /><span className="text-gray-100">last login date, time/ last user session</span></div>
                 </div>
                 <div className="flex gap-2">
                     <button>

@@ -13,7 +13,7 @@ function App () {
   const [messages, setMessages] = useState([])
   const [loggedInUser, setLoggedInUser] = useState({})
 
-  console.log({userHeaders})
+  console.log(userHeaders)
 
   return <>
 

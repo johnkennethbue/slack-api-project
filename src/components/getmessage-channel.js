@@ -8,11 +8,13 @@ const getMessageChannel = () => {
        messages,
        setMessages,
       } = useContext(Context);
+
+      console.log(userHeaders)
    
 useEffect(() => {
     axios({
       method: "GET",
-      url: `http://206.189.91.54/api/v1/messages?receiver_id=291&receiver_class=Channel`,
+      url: 'http://206.189.91.54/api/v1/messages?receiver_id=291&receiver_class=Channel',
       headers: {
         headers: {
             "access-token": userHeaders['access-token'],
@@ -33,7 +35,7 @@ useEffect(() => {
         <Fragment>
       <div>
           {messages.map(message => {
-              <div key={message.message}>
+              <div key={message.messages}>
                 {message.messages}
               </div>
           })}
