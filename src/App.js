@@ -13,6 +13,8 @@ function App () {
   const [channelMessages, setChannelMessages] = useState([])
   const [userMessages, setUserMessages] = useState ([])
   const [loggedInUser, setLoggedInUser] = useState({})
+  const [allChannels, setAllChannels] = useState([])
+  const [allUsers, setAllUsers] = useState([])
 
   console.log(userHeaders)
 
@@ -27,6 +29,10 @@ function App () {
       setUserMessages,
       loggedInUser,
       setLoggedInUser,
+      allChannels,
+      setAllChannels,
+      allUsers,
+      setAllUsers,
     }}>
 
     <div className="container">
