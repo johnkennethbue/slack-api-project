@@ -1,14 +1,22 @@
 import React from 'react'
-import { useContext } from 'react';
+import { useContext, useState } from 'react';
 import UseGetChannelMessage from './getmessage-channel'
 import UseGetUserMessage from './getmessage-user';
 import RetrieveChannel from './retrieve-channels'
 import GetAllUsers from './getall-users';
-import { Context } from '../App'
+import { Context } from '../App';
+import Channel from './Channel/Channel';
 
 function Homepage() {
+
+
     const { userHeaders } = useContext(Context);
     const displayEmail = userHeaders.get("uid");
+    const [showModal, setShowModal] = useState(false);
+    const openChannelModal = (e) =>{
+        e.preventDefault();
+        setShowModal(view => !view);
+      }
     return (
         <section className="grid grid-cols-12 grid-rows-auto overflow-hidden h-screen w-full ml-28">
             <div className="border col-span-3 flex gap-2 p-4 items-center justify-around text-white bg-pink-700">
@@ -58,13 +66,24 @@ function Homepage() {
             <div className=" border grid grid-rows-auto col-span-3 row-start-2 bg-red-50">
                         <div className=" border m-0 row-start-1 h-1/2 bg-pink-700 text-white h-96">
                             <div className="border">Channels</div>
-                                <div className="flex p-2 gap-2 my-44">
+                                <div className="flex p-2 gap-2 mb-44">
+                                <button className = "bg-black-100"
+                                    onClick = {openChannelModal}
+                                >
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10" viewBox="0 0 20 20" fill="currentColor">
+                                        <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-11a1 1 0 10-2 0v2H7a1 1 0 100 2h2v2a1 1 0 102 0v-2h2a1 1 0 100-2h-2V7z" clip-rule="evenodd" />
+                                    </svg>
+                                </button>
+                                    <Channel
+                                    showModal = {showModal} 
+                                    setShowModal = {setShowModal} 
+                                    />
                                 <RetrieveChannel />
                                 </div>
                         </div>
                         <div className="border overflow-x-auto h-96 row-start-2 bg-pink-700 text-white -mt-64">
                                 <div className="border">Direct Messages</div>
-                                <div>
+                                <div className="px-2">
                                  <GetAllUsers />
                                 </div>
                         </div>
