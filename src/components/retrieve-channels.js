@@ -5,7 +5,7 @@ import { Context } from "../App";
 const RetrieveChannels = () => {
   const { userHeaders, allChannels, setAllChannels } = useContext(Context);
 
-  console.log(userHeaders);
+  console.log(allChannels);
 
   const rehydrate = () => {
     axios({
@@ -33,9 +33,10 @@ const RetrieveChannels = () => {
   return (
     <Fragment>
      <div>
-        {allChannels?.map((channel, index) => {
-          <div key={index}>{channel}</div>;
-        })}
+        {
+        allChannels?.map(channel => (
+          <ul key={channel.id}>{channel.value}</ul>
+        ))}
     </div>
     </Fragment>
   );
