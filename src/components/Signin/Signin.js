@@ -16,7 +16,7 @@ export default function Signin() {
   const openSignUpModal = (e) =>{
     e.preventDefault();
     setShowModal(view => !view);
-}
+  }
 
 console.log(showModal)
 

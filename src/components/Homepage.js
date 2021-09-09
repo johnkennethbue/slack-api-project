@@ -2,7 +2,7 @@ import React from 'react'
 import { useContext, useState } from 'react';
 import UseGetChannelMessage from './getmessage-channel'
 import UseGetUserMessage from './getmessage-user';
-import RetrieveChannel from './retrieve-channels'
+import RetrieveChannels from './retrieve-channels'
 import GetAllUsers from './getall-users';
 import { Context } from '../App';
 import Channel from './Channel/Channel';
@@ -36,9 +36,9 @@ function Homepage() {
                 </div>
                 <div>
                     <button>
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7" viewBox="0 0 20 20" fill="currentColor">
-                        <path d="M6 10a2 2 0 11-4 0 2 2 0 014 0zM12 10a2 2 0 11-4 0 2 2 0 014 0zM16 12a2 2 0 100-4 2 2 0 000 4z" />
-                    </svg>
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7" viewBox="0 0 20 20" fill="currentColor">
+                            <path d="M6 10a2 2 0 11-4 0 2 2 0 014 0zM12 10a2 2 0 11-4 0 2 2 0 014 0zM16 12a2 2 0 100-4 2 2 0 000 4z" />
+                        </svg>
                     </button>
                 </div>
             </div>
@@ -54,10 +54,6 @@ function Homepage() {
                 <div className="flex gap-2">
                     <button>
                         <svg xmlns="http://www.w3.org/2000/svg" className="h-7 w-7" viewBox="0 0 20 20" fill="currentColor">
-                        </svg>
-                    </button>
-                    <button>
-                        <svg xmlns="http://www.w3.org/2000/svg" className="h-7 w-7" viewBox="0 0 20 20" fill="currentColor">
                             <path fillRule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clipRule="evenodd" />
                         </svg>
                     </button>
@@ -67,6 +63,7 @@ function Homepage() {
                         <div className=" border m-0 row-start-1 h-1/2 bg-pink-700 text-white h-96">
                             <div className="border">Channels</div>
                                 <div className="flex p-2 gap-2 mb-44">
+                                    <RetrieveChannels />
                                 <button className = "bg-black-100"
                                     onClick = {openChannelModal}
                                 >
@@ -78,7 +75,6 @@ function Homepage() {
                                     showModal = {showModal} 
                                     setShowModal = {setShowModal} 
                                     />
-                                <RetrieveChannel />
                                 </div>
                         </div>
                         <div className="border overflow-x-auto h-96 row-start-2 bg-pink-700 text-white -mt-64">

@@ -10,7 +10,7 @@ const RetrieveChannels = () => {
   const rehydrate = () => {
     axios({
         method: "GET",
-        url: "http://206.189.91.54/api/v1/channels",
+        url: "http://206.189.91.54/api/v1/channels/",
         headers: {
             "access-token": userHeaders.get("access-token"),
             client: userHeaders.get("client"),
@@ -35,7 +35,7 @@ const RetrieveChannels = () => {
      <div>
         {
         allChannels?.map(channel => (
-          <ul key={channel.id}>{channel.value}</ul>
+          <ul key={channel.id}>{channel.name}</ul>
         ))}
     </div>
     </Fragment>
