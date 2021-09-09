@@ -10,7 +10,8 @@ export const Context = React.createContext();
 
 function App () {
   const [userHeaders, setUserHeaders] = useState({})
-  const [messages, setMessages] = useState([])
+  const [channelMessages, setChannelMessages] = useState([])
+  const [userMessages, setUserMessages] = useState ([])
   const [loggedInUser, setLoggedInUser] = useState({})
 
   console.log(userHeaders)
@@ -20,8 +21,10 @@ function App () {
     <Context.Provider value={{
       userHeaders,
       setUserHeaders,
-      messages,
-      setMessages,
+      channelMessages,
+      setChannelMessages,
+      userMessages,
+      setUserMessages,
       loggedInUser,
       setLoggedInUser,
     }}>

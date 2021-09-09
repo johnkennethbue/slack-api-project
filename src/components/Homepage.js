@@ -1,6 +1,7 @@
 import React from 'react'
 import { useContext } from 'react';
-import GetMessageChannel from './getmessage-channel'
+import UseGetChannelMessage from './getmessage-channel'
+import UseGetUserMessage from './getmessage-user';
 import { Context } from '../App'
 
 function Homepage() {
@@ -91,7 +92,8 @@ function Homepage() {
             </div>
             <div className="border grid h-screen w-auto col-span-9 flex">
                 <div className=" row-span-6 p-4 h-full">
-                    <GetMessageChannel />
+                    <UseGetChannelMessage />
+                    <UseGetUserMessage />
                 </div>
                 <div className="border px-4 h-16 bg-pink-700 gap-6">
                     <input
