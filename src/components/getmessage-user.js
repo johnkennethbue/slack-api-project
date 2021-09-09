@@ -20,7 +20,7 @@ const useGetUserMessage = () => {
         })
         .then((response) => {
           console.log(response.headers);
-          setMessages(response.data.data);
+          setUserMessages(response.data.data);
         })
         .catch((error) => {
             console.error(error.response?.data.errors)

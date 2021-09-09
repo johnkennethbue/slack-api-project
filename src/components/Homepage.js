@@ -2,9 +2,12 @@ import React from 'react'
 import { useContext } from 'react';
 import UseGetChannelMessage from './getmessage-channel'
 import UseGetUserMessage from './getmessage-user';
+import RetrieveChannel from './retrieve-channels'
 import { Context } from '../App'
 
 function Homepage() {
+    const { userHeaders } = useContext(Context);
+    const displayEmail = userHeaders.get("uid");
     return (
         <section className="grid grid-cols-12 grid-rows-auto overflow-hidden h-screen w-full ml-28">
             <div className="border col-span-3 flex gap-2 p-4 items-center justify-around text-white bg-pink-700">
@@ -37,7 +40,7 @@ function Homepage() {
                             <path fillRule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-6-3a2 2 0 11-4 0 2 2 0 014 0zm-2 4a5 5 0 00-4.546 2.916A5.986 5.986 0 0010 16a5.986 5.986 0 004.546-2.084A5 5 0 0010 11z" clipRule="evenodd" />
                         </svg>
                     </div>
-                    <div>Username<br /><span className="text-gray-100">last login date, time/ last user session</span></div>
+                    <div>{displayEmail}<br /><span className="text-gray-100">last login date, time/ last user session</span></div>
                 </div>
                 <div className="flex gap-2">
                     <button>
@@ -56,27 +59,7 @@ function Homepage() {
                         <div className=" border m-0 row-start-1 h-1/2 bg-pink-700 text-white">
                             <div className="border">Channels</div>
                                 <div className="flex p-2 gap-2">
-                                    <div className="p-2">
-                                        <button>
-                                            <svg xmlns="http://www.w3.org/2000/svg" className="h-10 w-10" viewBox="0 0 20 20" fill="currentColor">
-                                                <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-11a1 1 0 10-2 0v2H7a1 1 0 100 2h2v2a1 1 0 102 0v-2h2a1 1 0 100-2h-2V7z" clipRule="evenodd" />
-                                            </svg>
-                                        </button>
-                                    </div>
-                                    <div className="p-2">
-                                        <button>
-                                            <svg xmlns="http://www.w3.org/2000/svg" className="h-10 w-10" viewBox="0 0 20 20" fill="currentColor">
-                                                <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-11a1 1 0 10-2 0v2H7a1 1 0 100 2h2v2a1 1 0 102 0v-2h2a1 1 0 100-2h-2V7z" clipRule="evenodd" />
-                                            </svg>
-                                        </button>
-                                    </div>                
-                                    <div className="p-2">
-                                        <button>
-                                            <svg xmlns="http://www.w3.org/2000/svg" className="h-10 w-10" viewBox="0 0 20 20" fill="currentColor">
-                                                <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-11a1 1 0 10-2 0v2H7a1 1 0 100 2h2v2a1 1 0 102 0v-2h2a1 1 0 100-2h-2V7z" clipRule="evenodd" />
-                                            </svg>
-                                        </button>
-                                    </div>                
+                                <RetrieveChannel />
                                 </div>
                         </div>
                         <div className="border row-start-2 bg-pink-700 text-white -mt-64">
