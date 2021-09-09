@@ -12,7 +12,6 @@ function App () {
   const [userHeaders, setUserHeaders] = useState({})
   const [channelMessages, setChannelMessages] = useState([])
   const [userMessages, setUserMessages] = useState ([])
-  const [loggedInUser, setLoggedInUser] = useState({})
   const [allChannels, setAllChannels] = useState([])
   const [allUsers, setAllUsers] = useState([])
 
@@ -27,8 +26,6 @@ function App () {
       setChannelMessages,
       userMessages,
       setUserMessages,
-      loggedInUser,
-      setLoggedInUser,
       allChannels,
       setAllChannels,
       allUsers,

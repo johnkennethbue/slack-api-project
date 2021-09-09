@@ -3,6 +3,7 @@ import { useContext } from 'react';
 import UseGetChannelMessage from './getmessage-channel'
 import UseGetUserMessage from './getmessage-user';
 import RetrieveChannel from './retrieve-channels'
+import GetAllUsers from './getall-users';
 import { Context } from '../App'
 
 function Homepage() {
@@ -45,7 +46,6 @@ function Homepage() {
                 <div className="flex gap-2">
                     <button>
                         <svg xmlns="http://www.w3.org/2000/svg" className="h-7 w-7" viewBox="0 0 20 20" fill="currentColor">
-                            <path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z" />
                         </svg>
                     </button>
                     <button>
@@ -56,20 +56,16 @@ function Homepage() {
                 </div>
             </div>
             <div className=" border grid grid-rows-auto col-span-3 row-start-2 bg-red-50">
-                        <div className=" border m-0 row-start-1 h-1/2 bg-pink-700 text-white">
+                        <div className=" border m-0 row-start-1 h-1/2 bg-pink-700 text-white h-96">
                             <div className="border">Channels</div>
-                                <div className="flex p-2 gap-2">
+                                <div className="flex p-2 gap-2 my-44">
                                 <RetrieveChannel />
                                 </div>
                         </div>
-                        <div className="border row-start-2 bg-pink-700 text-white -mt-64">
+                        <div className="border overflow-x-auto h-96 row-start-2 bg-pink-700 text-white -mt-64">
                                 <div className="border">Direct Messages</div>
                                 <div>
-                                    <div className="py-4 border ">user_1</div>
-                                    <div className="py-4 border ">user_2</div>
-                                    <div className="py-4 border ">user_3</div>
-                                    <div className="py-4 border ">user_4</div>
-                                    <div className="py-4 border ">user_5</div>
+                                 <GetAllUsers />
                                 </div>
                         </div>
             </div>

@@ -5,7 +5,7 @@ import { Context } from "../App";
 const useGetUserMessage = () => {
   const { userHeaders, userMessages, setUserMessages } = useContext(Context);
 
-  console.log(userHeaders);
+  console.log(userMessages);
 
   const rehydrate = () => {
     axios({
@@ -34,9 +34,9 @@ const useGetUserMessage = () => {
   return (
     <Fragment>
       <div>
-        {userMessages.map((message) => {
-          <div key={message.messages}>{message.messages}</div>;
-        })}
+        {userMessages.map(message => (
+          <div key={message.id}>{message.body}</div>
+        ))}
       </div>
     </Fragment>
   );
