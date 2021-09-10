@@ -1,22 +1,15 @@
-import { useState, useContext, useCallback, useEffect } from "react";
-import { set } from "react-hook-form";
+import { useState, useContext } from "react";
 import Swal from "sweetalert2";
 import { Context } from "../../App";
-import { useHistory } from "react-router";
-import { useSetLogUser } from "../ChatBar/userProvider.js";
+import { useHistory } from "react-router-dom";
 
 const endPoint = "http://206.189.91.54/api/v1/auth/sign_in";
-const credentials = {
-  email: "akosipc@gmail.com",
-  password: "password",
-};
 
 export default function useSignin() {
   const history = useHistory();
-  const loggedIn = useCallback(() => history.push("/home"), [history]);
-  const setUser = useSetLogUser();
 
-  const { setUserHeaders, setLoggedInUser } = useContext(Context);
+  const { setUserHeaders, userHeaders } = useContext(Context);
+  console.log(userHeaders);
 
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
@@ -46,23 +39,20 @@ export default function useSignin() {
         const client = response.headers.get("client");
         const expiry = response.headers.get("expiry");
 
-        setUserHeaders(response.headers);
-        setUser({
-          type: "saveUsers",
-          payload: {
-            accessToken: accessToken,
-            uid: uid,
-            client: client,
-            expiry: expiry,
-          },
-        });
+        const user = {
+          "access-token": accessToken,
+          uid,
+          client,
+          expiry,
+        };
+        setUserHeaders(user);
 
         Swal.fire({
           icon: "success",
           title: "Sign in Success",
         });
-        console.log(response, accessToken, uid, client, expiry);
-        loggedIn();
+
+        history.push("/chatBar");
       } else {
         setError("Unknown error occured");
       }
