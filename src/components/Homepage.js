@@ -1,12 +1,10 @@
 import React from "react";
 import { useContext } from "react";
-import UseGetChannelMessage from "./getmessage-channel";
-import UseGetUserMessage from "./getmessage-user";
-import RetrieveChannel from "./retrieve-channels";
-import GetAllUsers from "./getall-users";
+import Channels from "./Channels";
+import Users from "./Users";
 import { Context } from "../App";
-import { Redirect } from "react-router";
-import ChatBar from "./ChatBar/ChatBar";
+import { Redirect, Route } from "react-router-dom";
+import Chat from "./Chat/Chat";
 
 function Homepage() {
   const { userHeaders } = useContext(Context);
@@ -14,7 +12,7 @@ function Homepage() {
   if (!userHeaders) {
     return <Redirect to="/signin" />;
   }
-  const displayEmail = userHeaders?.uid;
+  const displayEmail = userHeaders.uid;
   return (
     <div className = "flex w-auto h-screen overflow-y-auto">
     <section className="w-full grid grid-cols-chat grid-rows-chat h-min overflow-hidden">
@@ -39,14 +37,14 @@ function Homepage() {
           <button>
             <svg
               xmlns="http://www.w3.org/2000/svg"
-              class="h-7 w-7"
+              className="h-7 w-7"
               viewBox="0 0 20 20"
               fill="currentColor"
             >
               <path
-                fill-rule="evenodd"
+                fillRule="evenodd"
                 d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z"
-                clip-rule="evenodd"
+                clipRule="evenodd"
               />
             </svg>
           </button>
@@ -55,7 +53,7 @@ function Homepage() {
           <button>
             <svg
               xmlns="http://www.w3.org/2000/svg"
-              class="h-7 w-7"
+              className="h-7 w-7"
               viewBox="0 0 20 20"
               fill="currentColor"
             >
@@ -126,18 +124,11 @@ function Homepage() {
           <div className="font-bold text-xl text-white bg-pink-900">
             Direct Messages
           </div>
-          <div className="overflow-y-auto h-72">
-            <GetAllUsers />
-          </div>
+          <Users />
         </div>
       </div>
-      <div className="grid grid-rows-messages">
-        <div className=" row-span-6 p-4">
-          <UseGetChannelMessage />
-          <UseGetUserMessage />
-        </div>
-        <ChatBar />
-      </div>
+      {/* Route will catch :id and :type value from <Link/> and pass it to <Chat/> as props */}
+      <Route path="/:id/:type" component={Chat} />
     </section>
     </div>
   );

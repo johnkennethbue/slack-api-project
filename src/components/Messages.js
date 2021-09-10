@@ -2,20 +2,20 @@ import { useEffect, useContext, Fragment } from "react";
 import axios from "axios";
 import { Context } from "../App";
 
-const useGetChannelMessage = () => {
+const Messages = (props) => {
   const { userHeaders, channelMessages, setChannelMessages } =
     useContext(Context);
 
-  console.log(userHeaders);
+  const receiver_id = props.id;
+  const type = props.type;
 
   const rehydrate = () => {
     axios({
       method: "GET",
-      url: "http://206.189.91.54/api/v1/messages?receiver_id=291&receiver_class=Channel",
+      url: `http://206.189.91.54/api/v1/messages?receiver_id=${receiver_id}&receiver_class=${type}`,
       headers: userHeaders,
     })
       .then((response) => {
-        console.log(response.headers);
         setChannelMessages(response.data.data);
       })
       .catch((error) => {
@@ -25,11 +25,11 @@ const useGetChannelMessage = () => {
 
   useEffect(() => {
     rehydrate();
-  }, []);
+  }, [receiver_id, type]);
 
   return (
     <Fragment>
-      <div>
+      <div className="">
         {channelMessages.map((message) => (
           <div key={message.id}>{message.body}</div>
         ))}
@@ -38,4 +38,4 @@ const useGetChannelMessage = () => {
   );
 };
 
-export default useGetChannelMessage;
+export default Messages;
