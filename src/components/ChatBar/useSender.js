@@ -12,8 +12,8 @@ export default function useSender() {
     console.log(data);
 
     const requestBody = {
-      receiver_id: 291,
-      receiver_class: "Channel",
+      receiver_id: 337,
+      receiver_class: "User",
       body: message,
     };
 

@@ -9,12 +9,7 @@ const GetAllUsers = () => {
     axios({
       method: "GET",
       url: "http://206.189.91.54/api/v1/users",
-      headers: {
-        "access-token": userHeaders.get("access-token"),
-        client: userHeaders.get("client"),
-        expiry: userHeaders.get("expiry"),
-        uid: userHeaders.get("uid"),
-      },
+      headers: userHeaders,
     })
       .then((response) => {
         setAllUsers(response.data.data);

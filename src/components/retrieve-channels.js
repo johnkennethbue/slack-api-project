@@ -9,35 +9,29 @@ const RetrieveChannels = () => {
 
   const rehydrate = () => {
     axios({
-        method: "GET",
-        url: "http://206.189.91.54/api/v1/channels",
-        headers: {
-            "access-token": userHeaders.get("access-token"),
-            client: userHeaders.get("client"),
-            expiry: userHeaders.get("expiry"),
-            uid: userHeaders.get("uid"),
-          }
-        })
-        .then((response) => {
-          console.log(response.headers);
-          setAllChannels(response.data.data);
-        })
-        .catch((error) => {
-            console.error(error.response?.data.errors)
-        });
-  }
-   useEffect(() => {
+      method: "GET",
+      url: "http://206.189.91.54/api/v1/channels",
+      headers: userHeaders,
+    })
+      .then((response) => {
+        console.log(response.headers);
+        setAllChannels(response.data.data);
+      })
+      .catch((error) => {
+        console.error(error.response?.data.errors);
+      });
+  };
+  useEffect(() => {
     rehydrate();
-   }, []);
+  }, []);
 
   return (
     <Fragment>
-     <div>
-        {
-        allChannels?.map(channel => (
+      <div>
+        {allChannels?.map((channel) => (
           <ul key={channel.id}>{channel.value}</ul>
         ))}
-    </div>
+      </div>
     </Fragment>
   );
 };
