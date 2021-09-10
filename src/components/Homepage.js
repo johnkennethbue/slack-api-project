@@ -16,7 +16,8 @@ function Homepage() {
   }
   const displayEmail = userHeaders?.uid;
   return (
-    <section className="w-full grid grid-cols-chat grid-rows-chat h-auto">
+    <div className = "flex w-auto h-screen overflow-y-auto">
+    <section className="w-full grid grid-cols-chat grid-rows-chat h-min overflow-hidden">
       <div className="bg-pink-700 flex justify-around items-center border border-white">
         <div>
           <button className="m-0">
@@ -113,11 +114,11 @@ function Homepage() {
         </div>
       </div>
       <div className="bg-pink-700 grid grid-rows-2">
-        <div className="">
+        <div className="h-min">
           <div className="font-bold text-xl text-white bg-pink-900">
             Channels
           </div>
-          <div className="overflow-y-auto h-96">
+          <div className="overflow-y-auto h-12">
             <RetrieveChannel />
           </div>
         </div>
@@ -125,7 +126,7 @@ function Homepage() {
           <div className="font-bold text-xl text-white bg-pink-900">
             Direct Messages
           </div>
-          <div className="overflow-y-auto h-96">
+          <div className="overflow-y-auto h-72">
             <GetAllUsers />
           </div>
         </div>
@@ -138,6 +139,7 @@ function Homepage() {
         <ChatBar />
       </div>
     </section>
+    </div>
   );
 }
 
