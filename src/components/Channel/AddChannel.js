@@ -3,10 +3,9 @@ import axios from "axios";
 import { Context } from "../../App";
 import { useForm } from "react-hook-form";
 
-function Channel({showModal, setShowModal}) {
+function AddChannel({showModal, setShowModal}) {
     const { register, handleSubmit} = useForm();
     const { userHeaders } = useContext(Context);
-    const [ newChannel, setNewChannel ] = useState({});
     
 
     const addNewChannelSubmit = (data) => {
@@ -18,12 +17,7 @@ function Channel({showModal, setShowModal}) {
         axios({
             method: "POST",
             url: `http://206.189.91.54/api/v1/channels`,
-            headers: {
-                "access-token": userHeaders.get("access-token"),
-                client: userHeaders.get("client"),
-                expiry: userHeaders.get("expiry"),
-                uid: userHeaders.get("uid"),
-            },
+            headers: userHeaders,
             data: channelData,
         })
         .then((response) => {  
@@ -63,7 +57,7 @@ function Channel({showModal, setShowModal}) {
                 <div>
                     <h1 class = "text-2xl text-center ">Add Channel</h1>
                     <div class = "flex flex-col justify-center items-center">
-                            <input {...register("Channel Name", { required: "Channel Name is required" })}
+                            <input {...register("name", { required: "Channel Name is required" })}
                                 name = "name"
                                 class =  "w-full mt-4 content-center text-base px-4 py-2 border-b-2 rounded-xl border-gray-500 focus:outline-none focus:border-pink-600"                        
                                 type = "text"
@@ -96,4 +90,4 @@ function Channel({showModal, setShowModal}) {
     )
 };
 
-export default Channel;
+export default AddChannel;
