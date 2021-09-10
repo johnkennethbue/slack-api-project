@@ -27,7 +27,7 @@ const RetrieveChannels = () => {
 
   return (
     <Fragment>
-      <div>
+      <div className="p-2">
         {allChannels?.map((channel) => (
           <ul key={channel.id}>{channel.name}</ul>
         ))}

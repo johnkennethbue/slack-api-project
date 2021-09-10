@@ -52,7 +52,7 @@ export default function useSignin() {
           title: "Sign in Success",
         });
 
-        history.push("/home");
+        history.push("/");
       } else {
         setError("Unknown error occured");
       }

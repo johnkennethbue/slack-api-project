@@ -39,12 +39,12 @@ function App() {
         setAllUsers,
       }}
     >
-      <div className="container">
+      <div className="min-h-screen w-full">
         <Switch>
           <Route path="/signin" component={Signin} />
-          <Route path="/home" component={Homepage} />
           <Route path="/signup" component={SignUpForm} />
           <Route path="/chatbar" component={ChatBar} />
+          <Route exact path="/" component={Homepage} />
         </Switch>
       </div>
     </Context.Provider>

@@ -5,13 +5,18 @@ import UseGetUserMessage from "./getmessage-user";
 import RetrieveChannel from "./retrieve-channels";
 import GetAllUsers from "./getall-users";
 import { Context } from "../App";
+import { Redirect } from "react-router";
 
 function Homepage() {
   const { userHeaders } = useContext(Context);
-  const displayEmail = userHeaders.uid;
+  //if userHeader is null -> nothing retrieved from localStorage
+  if (!userHeaders) {
+    return <Redirect to="/signin" />;
+  }
+  const displayEmail = userHeaders?.uid;
   return (
-    <section className="grid grid-cols-12 grid-rows-auto overflow-hidden h-screen w-full ml-28">
-      <div className="border col-span-3 flex gap-2 p-4 items-center justify-around text-white bg-pink-700">
+    <section className="w-full grid grid-cols-chat grid-rows-chat h-auto">
+      <div className="bg-pink-700 flex justify-around items-center border border-white">
         <div>
           <button className="m-0">
             <svg
@@ -57,7 +62,7 @@ function Homepage() {
           </button>
         </div>
       </div>
-      <div className="border col-span-9 flex items-center gap-2 p-4 justify-between text-white bg-pink-700">
+      <div className="bg-pink-700 flex justify-between border border-white p-2">
         <div className="flex gap-4 items-center">
           <div>
             <svg
@@ -106,32 +111,32 @@ function Homepage() {
           </button>
         </div>
       </div>
-      <div className=" border grid grid-rows-auto col-span-3 row-start-2 bg-red-50">
-        <div className=" border m-0 row-start-1 h-1/2 bg-pink-700 text-white h-96">
-          <div className="border">Channels</div>
-          <div className="flex p-2 gap-2 my-44">
+      <div className="bg-pink-700 grid grid-rows-2">
+        <div className="">
+          <div className="font-bold text-xl text-white bg-pink-900">
+            Channels
+          </div>
+          <div className="overflow-y-auto h-96">
             <RetrieveChannel />
           </div>
         </div>
-        <div className="border overflow-x-auto h-96 row-start-2 bg-pink-700 text-white -mt-64">
-          <div className="border">Direct Messages</div>
-          <div>
+        <div className="">
+          <div className="font-bold text-xl text-white bg-pink-900">
+            Direct Messages
+          </div>
+          <div className="overflow-y-auto h-96">
             <GetAllUsers />
           </div>
         </div>
       </div>
-      <div className="border grid h-screen w-auto col-span-9 flex">
-        <div className=" row-span-6 p-4 h-full">
+      <div className="grid grid-rows-messages">
+        <div className=" row-span-6 p-4">
           <UseGetChannelMessage />
           <UseGetUserMessage />
         </div>
-        <div className="border px-4 h-16 bg-pink-700 gap-6">
-          <input
-            className="border w-11/12 mx-2 h-10"
-            type="text"
-            placeholder="Enter a message"
-          />
-          <button className="px-4 py-2 mt-2 bg-pink-400 border rounded-md">
+        <form className="h-16 grid grid-cols-bar p-3 bg-pink-700">
+          <input className="p-2" type="text" placeholder="Enter a message" />
+          <button className="ml-3" type="button">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               className=" m-0 h-5 w-5 transform rotate-90"
@@ -141,7 +146,7 @@ function Homepage() {
               <path d="M10.894 2.553a1 1 0 00-1.788 0l-7 14a1 1 0 001.169 1.409l5-1.429A1 1 0 009 15.571V11a1 1 0 112 0v4.571a1 1 0 00.725.962l5 1.428a1 1 0 001.17-1.408l-7-14z" />
             </svg>
           </button>
-        </div>
+        </form>
       </div>
     </section>
   );

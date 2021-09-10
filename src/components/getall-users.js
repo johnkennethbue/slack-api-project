@@ -24,7 +24,7 @@ const GetAllUsers = () => {
 
   return (
     <Fragment>
-      <div>
+      <div className="p-2">
         {allUsers.map((users) => (
           <ul key={users.id}> {users.uid} </ul>
         ))}
