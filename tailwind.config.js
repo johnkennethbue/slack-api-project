@@ -8,7 +8,7 @@ module.exports = {
         bar: "1fr auto",
       },
       gridTemplateRows: {
-        chat: "auto 1fr",
+        chat: "7vh 93vh",
         messages: "1fr auto",
       },
     },

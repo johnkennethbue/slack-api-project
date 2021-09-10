@@ -8,7 +8,7 @@ const Chat = (props) => {
 
   return (
     <div className="grid grid-rows-messages">
-      <div className=" row-span-6 p-4">
+      <div className=" row-span-6 p-4 overflow-y-auto">
         <Messages id={id} type={type} />
       </div>
       <ChatBar id={id} type={type} />

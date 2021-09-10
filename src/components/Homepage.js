@@ -110,14 +110,14 @@ function Homepage() {
           </button>
         </div>
       </div>
-      <div className="bg-pink-700">
-        <div className="">
+      <div className="bg-pink-700 grid grid-rows-2">
+        <div className="overflow-y-auto relative">
           <div className="font-bold text-xl text-white bg-pink-900">
             Channels
           </div>
           <Channels />
         </div>
-        <div className="">
+        <div className="overflow-y-auto relative">
           <div className="font-bold text-xl text-white bg-pink-900">
             Direct Messages
           </div>

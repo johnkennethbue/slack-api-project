@@ -26,7 +26,7 @@ const Channels = () => {
   //clicking link will match /:id/:type
   return (
     <Fragment>
-      <ul className="p-2 h-96 overflow-y-auto">
+      <ul className="p-2">
         {allChannels?.map((channel) => (
           <li key={channel.id}>
             <Link to={`/${channel.id}/Channel`}>{channel.name}</Link>

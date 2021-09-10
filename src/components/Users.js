@@ -25,7 +25,7 @@ const Users = () => {
 
   return (
     <Fragment>
-      <ul className="p-2 h-96 overflow-y-auto">
+      <ul className="p-2">
         {allUsers.map((user) => (
           <li key={user.id}>
             <Link to={`/${user.id}/User`}>{user.uid}</Link>
