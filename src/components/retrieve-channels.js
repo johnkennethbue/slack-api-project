@@ -29,7 +29,7 @@ const RetrieveChannels = () => {
     <Fragment>
       <div>
         {allChannels?.map((channel) => (
-          <ul key={channel.id}>{channel.value}</ul>
+          <ul key={channel.id}>{channel.name}</ul>
         ))}
       </div>
     </Fragment>
