@@ -1,12 +1,19 @@
 import React from "react";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import Channels from "./Channels";
 import Users from "./Users";
 import { Context } from "../App";
 import { Redirect, Route } from "react-router-dom";
 import Chat from "./Chat/Chat";
+import AddChannel from "./Channel/AddChannel";
 
 function Homepage() {
+  const [showModal, setShowModal] = useState(false);
+  const openAddChannelModal = (e) => {
+    e.preventDefault();
+    setShowModal((view) => !view);
+  }
+
   const { userHeaders } = useContext(Context);
   //if userHeader is null -> nothing retrieved from localStorage
   if (!userHeaders) {
@@ -22,7 +29,6 @@ function Homepage() {
               xmlns="http://www.w3.org/2000/svg"
               className="h-7 w-7"
               viewBox="0 0 20 20"
-              fill="currentColor"
             >
               <path
                 fillRule="evenodd"
@@ -116,6 +122,16 @@ function Homepage() {
             Channels
           </div>
           <Channels />
+          <button
+            className="px-2"
+            onClick={openAddChannelModal}          
+          >
+            Add Channel
+          </button>
+          <AddChannel 
+            showModal = {showModal}
+            setShowModal = {setShowModal}
+          />
         </div>
         <div className="overflow-y-auto">
           <div className="font-bold text-xl text-white bg-pink-900">
