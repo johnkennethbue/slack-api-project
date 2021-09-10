@@ -9,7 +9,6 @@ export default function useSignin() {
   const history = useHistory();
 
   const { setUserHeaders, userHeaders } = useContext(Context);
-  console.log(userHeaders);
 
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);

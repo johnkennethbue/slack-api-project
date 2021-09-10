@@ -1,21 +1,19 @@
 import { useEffect, useContext, Fragment } from "react";
 import axios from "axios";
 import { Context } from "../App";
+import { Link } from "react-router-dom";
 
-const RetrieveChannels = () => {
-  const { userHeaders, allChannels, setAllChannels } = useContext(Context);
-
-  console.log(allChannels);
+const Users = () => {
+  const { userHeaders, allUsers, setAllUsers } = useContext(Context);
 
   const rehydrate = () => {
     axios({
       method: "GET",
-      url: "http://206.189.91.54/api/v1/channels",
+      url: "http://206.189.91.54/api/v1/users",
       headers: userHeaders,
     })
       .then((response) => {
-        console.log(response.headers);
-        setAllChannels(response.data.data);
+        setAllUsers(response.data.data);
       })
       .catch((error) => {
         console.error(error.response?.data.errors);
@@ -27,13 +25,15 @@ const RetrieveChannels = () => {
 
   return (
     <Fragment>
-      <div className="p-2">
-        {allChannels?.map((channel) => (
-          <ul key={channel.id}>{channel.name}</ul>
+      <ul className="p-2 h-96 overflow-y-auto">
+        {allUsers.map((user) => (
+          <li key={user.id}>
+            <Link to={`/${user.id}/User`}>{user.uid}</Link>
+          </li>
         ))}
-      </div>
+      </ul>
     </Fragment>
   );
 };
 
-export default RetrieveChannels;
+export default Users;

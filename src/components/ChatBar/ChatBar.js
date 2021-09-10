@@ -1,9 +1,11 @@
 import { useForm } from "react-hook-form";
 import useSender from "./useSender";
 
-export default function ChatBar() {
+export default function ChatBar(props) {
+  const type = props.type;
+  const receiver_id = props.id;
   const { register, handleSubmit } = useForm();
-  const sendHandler = useSender();
+  const sendHandler = useSender(type, receiver_id);
 
   return (
     <form
@@ -16,7 +18,7 @@ export default function ChatBar() {
         placeholder="Enter a message"
         {...register("message")}
       />
-      <button className="ml-3" type="button">
+      <button className="ml-3" type="submit">
         <svg
           xmlns="http://www.w3.org/2000/svg"
           className=" m-0 h-5 w-5 transform rotate-90"

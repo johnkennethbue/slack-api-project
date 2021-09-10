@@ -22,8 +22,6 @@ function App() {
     localStorage.setItem("user", JSON.stringify(user));
   }
 
-  console.log(userHeaders);
-
   return (
     <Context.Provider
       value={{
@@ -39,12 +37,12 @@ function App() {
         setAllUsers,
       }}
     >
-      <div className="min-h-screen w-full">
+      <div className="grid">
         <Switch>
           <Route path="/signin" component={Signin} />
           <Route path="/signup" component={SignUpForm} />
           <Route path="/chatbar" component={ChatBar} />
-          <Route exact path="/" component={Homepage} />
+          <Route path="/" component={Homepage} />
         </Switch>
       </div>
     </Context.Provider>

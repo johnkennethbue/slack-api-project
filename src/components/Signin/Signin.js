@@ -47,7 +47,7 @@ export default function Signin() {
             value={`${loading ? "*  *  *" : "Submit"}`}
           />
         </div>
-        <button class="ml-96" onClick={openSignUpModal}>
+        <button className="ml-96" onClick={openSignUpModal}>
           Sign Up
         </button>
         <SignUpForm showModal={showModal} setShowModal={setShowModal} />
