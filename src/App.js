@@ -4,39 +4,40 @@ import Signin from "./components/Signin/Signin";
 import SignUpForm from "./components/SignUpForm";
 import Homepage from "./components/Homepage";
 import React, { useState, Fragment } from "react";
-
+import ChatBar from "./components/ChatBar.js/ChatBar";
 
 export const Context = React.createContext();
 
-function App () {
-  const [userHeaders, setUserHeaders] = useState({})
-  const [messages, setMessages] = useState([])
-  const [loggedInUser, setLoggedInUser] = useState({})
+function App() {
+  const [userHeaders, setUserHeaders] = useState({});
+  const [messages, setMessages] = useState([]);
+  const [loggedInUser, setLoggedInUser] = useState({});
 
-  console.log(userHeaders)
+  console.log(userHeaders);
 
-  return <>
-
-    <Context.Provider value={{
-      userHeaders,
-      setUserHeaders,
-      messages,
-      setMessages,
-      loggedInUser,
-      setLoggedInUser,
-    }}>
-
-    <div className="container">
-      <Switch>
-        <Route path="/signin" component={Signin} />
-        <Route path="/home" component={Homepage} />
-        <Route path="/signup" component={SignUpForm} />
-      </Switch>
-    </div>
-    </Context.Provider>
+  return (
+    <>
+      <Context.Provider
+        value={{
+          userHeaders,
+          setUserHeaders,
+          messages,
+          setMessages,
+          loggedInUser,
+          setLoggedInUser,
+        }}
+      >
+        <div className="container">
+          <Switch>
+            <Route path="/signin" component={Signin} />
+            <Route path="/home" component={Homepage} />
+            <Route path="/signup" component={SignUpForm} />
+            <Route path="/chat-bar" component={ChatBar} />
+          </Switch>
+        </div>
+      </Context.Provider>
     </>
-};
-
-
+  );
+}
 
 export default App;
