@@ -10,33 +10,36 @@ export const Context = React.createContext();
 
 function App() {
   const [userHeaders, setUserHeaders] = useState({});
-  const [messages, setMessages] = useState([]);
-  const [loggedInUser, setLoggedInUser] = useState({});
+  const [channelMessages, setChannelMessages] = useState([]);
+  const [userMessages, setUserMessages] = useState([]);
+  const [allChannels, setAllChannels] = useState([]);
+  const [allUsers, setAllUsers] = useState([]);
 
   console.log(userHeaders);
 
   return (
-    <>
-      <Context.Provider
-        value={{
-          userHeaders,
-          setUserHeaders,
-          messages,
-          setMessages,
-          loggedInUser,
-          setLoggedInUser,
-        }}
-      >
-        <div className="container">
-          <Switch>
-            <Route path="/signin" component={Signin} />
-            <Route path="/home" component={Homepage} />
-            <Route path="/signup" component={SignUpForm} />
-            <Route path="/chat-bar" component={ChatBar} />
-          </Switch>
-        </div>
-      </Context.Provider>
-    </>
+    <Context.Provider
+      value={{
+        userHeaders,
+        setUserHeaders,
+        channelMessages,
+        setChannelMessages,
+        userMessages,
+        setUserMessages,
+        allChannels,
+        setAllChannels,
+        allUsers,
+        setAllUsers,
+      }}
+    >
+      <div className="container">
+        <Switch>
+          <Route path="/signin" component={Signin} />
+          <Route path="/home" component={Homepage} />
+          <Route path="/signup" component={SignUpForm} />
+        </Switch>
+      </div>
+    </Context.Provider>
   );
 }
 
