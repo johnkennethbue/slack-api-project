@@ -12,12 +12,7 @@ const useGetChannelMessage = () => {
     axios({
       method: "GET",
       url: "http://206.189.91.54/api/v1/messages?receiver_id=291&receiver_class=Channel",
-      headers: {
-        "access-token": userHeaders.get("access-token"),
-        client: userHeaders.get("client"),
-        expiry: userHeaders.get("expiry"),
-        uid: userHeaders.get("uid"),
-      },
+      headers: userHeaders,
     })
       .then((response) => {
         console.log(response.headers);

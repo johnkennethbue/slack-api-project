@@ -9,32 +9,27 @@ const useGetUserMessage = () => {
 
   const rehydrate = () => {
     axios({
-        method: "GET",
-        url: "http://206.189.91.54/api/v1/messages?receiver_id=224&receiver_class=User",
-        headers: {
-            "access-token": userHeaders.get("access-token"),
-            client: userHeaders.get("client"),
-            expiry: userHeaders.get("expiry"),
-            uid: userHeaders.get("uid"),
-          }
-        })
-        .then((response) => {
-          console.log(response.headers);
-          setUserMessages(response.data.data);
-        })
-        .catch((error) => {
-            console.error(error.response?.data.errors)
-        });
-  }
+      method: "GET",
+      url: "http://206.189.91.54/api/v1/messages?receiver_id=224&receiver_class=User",
+      headers: userHeaders,
+    })
+      .then((response) => {
+        console.log(response.headers);
+        setUserMessages(response.data.data);
+      })
+      .catch((error) => {
+        console.error(error.response?.data.errors);
+      });
+  };
 
-   useEffect(() => {
+  useEffect(() => {
     rehydrate();
-   }, []);
+  }, []);
 
   return (
     <Fragment>
       <div>
-        {userMessages.map(message => (
+        {userMessages.map((message) => (
           <div key={message.id}>{message.body}</div>
         ))}
       </div>
