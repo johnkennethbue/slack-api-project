@@ -4,7 +4,7 @@ import Signin from "./components/Signin/Signin";
 import SignUpForm from "./components/SignUpForm";
 import Homepage from "./components/Homepage";
 import React, { useState, Fragment } from "react";
-import ChatBar from "./components/ChatBar.js/ChatBar";
+import ChatBar from "./components/ChatBar/ChatBar";
 
 export const Context = React.createContext();
 
@@ -37,6 +37,7 @@ function App() {
           <Route path="/signin" component={Signin} />
           <Route path="/home" component={Homepage} />
           <Route path="/signup" component={SignUpForm} />
+          <Route path="/chatbar" component={ChatBar} />
         </Switch>
       </div>
     </Context.Provider>

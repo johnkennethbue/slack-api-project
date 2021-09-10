@@ -3,7 +3,7 @@ const myHeaders = {
   client: "TdmPB-prCbBtjStYuOeuCg",
   expiry: 1631322970,
   uid: "akosipc@gmail.com",
-  "Content-type": "application/json",
+  "content-type": "application/json",
 };
 
 const endPoint = "http://206.189.91.54/api/v1/messages";
@@ -11,6 +11,7 @@ const endPoint = "http://206.189.91.54/api/v1/messages";
 export default function useSender() {
   async function sendHandler(data) {
     const message = data.message;
+    console.log(data);
 
     const requestBody = {
       receiver_id: 291,
@@ -20,9 +21,14 @@ export default function useSender() {
 
     const response = await fetch(endPoint, {
       method: "POST",
-      headers: myHeaders,
+      headers: { ...myHeaders },
       body: JSON.stringify(requestBody), //string
     });
+
+    const jsonData = await response.json();
+    if (response.status === 200) {
+      alert("Sent");
+    }
 
     console.log(response);
   }

@@ -3,6 +3,7 @@ import { set } from "react-hook-form";
 import Swal from "sweetalert2";
 import { Context } from "../../App";
 import { useHistory } from "react-router";
+import { useSetLogUser } from "../ChatBar/userProvider.js";
 
 const endPoint = "http://206.189.91.54/api/v1/auth/sign_in";
 const credentials = {
@@ -11,13 +12,11 @@ const credentials = {
 };
 
 export default function useSignin() {
-const history = useHistory();
-const loggedIn = useCallback(() => history.push('/home'), [history]);
+  const history = useHistory();
+  const loggedIn = useCallback(() => history.push("/home"), [history]);
+  const setUser = useSetLogUser();
 
-   const { 
-    setUserHeaders,
-    setLoggedInUser,
-   } = useContext(Context);
+  const { setUserHeaders, setLoggedInUser } = useContext(Context);
 
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
@@ -48,6 +47,15 @@ const loggedIn = useCallback(() => history.push('/home'), [history]);
         const expiry = response.headers.get("expiry");
 
         setUserHeaders(response.headers);
+        setUser({
+          type: "saveUsers",
+          payload: {
+            accessToken: accessToken,
+            uid: uid,
+            client: client,
+            expiry: expiry,
+          },
+        });
 
         Swal.fire({
           icon: "success",
