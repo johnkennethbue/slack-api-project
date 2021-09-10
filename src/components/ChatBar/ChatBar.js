@@ -4,6 +4,7 @@ import useSender from "./useSender";
 export default function ChatBar() {
   const { register, handleSubmit } = useForm();
   const sendHandler = useSender();
+
   return (
     <form
       onSubmit={handleSubmit(sendHandler)}
