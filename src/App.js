@@ -6,14 +6,21 @@ import Homepage from "./components/Homepage";
 import React, { useState, Fragment } from "react";
 import ChatBar from "./components/ChatBar/ChatBar";
 
+const savedUser = JSON.parse(localStorage.getItem("user"));
+
 export const Context = React.createContext();
 
 function App() {
-  const [userHeaders, setUserHeaders] = useState({});
+  const [userHeaders, setUserHeaders] = useState(savedUser);
   const [channelMessages, setChannelMessages] = useState([]);
   const [userMessages, setUserMessages] = useState([]);
   const [allChannels, setAllChannels] = useState([]);
   const [allUsers, setAllUsers] = useState([]);
+
+  function saveUser(user) {
+    setUserHeaders(user);
+    localStorage.setItem("user", JSON.stringify(user));
+  }
 
   console.log(userHeaders);
 
@@ -21,7 +28,7 @@ function App() {
     <Context.Provider
       value={{
         userHeaders,
-        setUserHeaders,
+        setUserHeaders: saveUser,
         channelMessages,
         setChannelMessages,
         userMessages,
