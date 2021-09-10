@@ -1,14 +1,12 @@
-const myHeaders = {
-  "access-token": "TTLtXEQUjd1i0BlR6q8zVg",
-  client: "TdmPB-prCbBtjStYuOeuCg",
-  expiry: 1631322970,
-  uid: "akosipc@gmail.com",
-  "content-type": "application/json",
-};
+import { useContext } from "react";
+import { Context } from "../../App";
 
 const endPoint = "http://206.189.91.54/api/v1/messages";
 
 export default function useSender() {
+  const value = useContext(Context);
+  const myHeaders = value.userHeaders;
+
   async function sendHandler(data) {
     const message = data.message;
     console.log(data);
@@ -21,7 +19,7 @@ export default function useSender() {
 
     const response = await fetch(endPoint, {
       method: "POST",
-      headers: { ...myHeaders },
+      headers: myHeaders,
       body: JSON.stringify(requestBody), //string
     });
 

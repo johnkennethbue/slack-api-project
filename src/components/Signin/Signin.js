@@ -1,7 +1,6 @@
-import React, {useState} from "react";
+import React, { useState } from "react";
 import { useForm, useFormState } from "react-hook-form";
-import { useHistory } from "react-router";
-import useSignin from "./useSign";
+import useSignin from "./useSignin";
 import SignUpForm from "../SignUpForm";
 
 export default function Signin() {
@@ -9,16 +8,14 @@ export default function Signin() {
     mode: "onChange",
   });
   const { errors } = useFormState({ control });
-  console.log(errors);
+
   const { signinHandler, loading, error: signinError } = useSignin();
 
   const [showModal, setShowModal] = useState(false);
-  const openSignUpModal = (e) =>{
+  const openSignUpModal = (e) => {
     e.preventDefault();
-    setShowModal(view => !view);
-}
-
-console.log(showModal)
+    setShowModal((view) => !view);
+  };
 
   // will get data from the register and needs to be passed on handle submit
 
@@ -50,18 +47,11 @@ console.log(showModal)
             value={`${loading ? "*  *  *" : "Submit"}`}
           />
         </div>
-        <button class = "ml-96"
-            onClick = {openSignUpModal}>
-            Sign Up
-          </button>
-          <SignUpForm
-          showModal = {showModal} 
-          setShowModal = {setShowModal} 
-          />
-
+        <button class="ml-96" onClick={openSignUpModal}>
+          Sign Up
+        </button>
+        <SignUpForm showModal={showModal} setShowModal={setShowModal} />
       </form>
-      
-
     </div>
   );
 }
