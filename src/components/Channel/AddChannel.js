@@ -23,7 +23,6 @@ function AddChannel({showModal, setShowModal}) {
         .then((response) => {  
             setShowModal(view => !view);
             console.log(JSON.stringify(response.data));
-            console.log(channelData)
         })
         .catch((error) => {
             console.error(error)
@@ -62,6 +61,8 @@ function AddChannel({showModal, setShowModal}) {
                                 class =  "w-full mt-4 content-center text-base px-4 py-2 border-b-2 rounded-xl border-gray-500 focus:outline-none focus:border-pink-600"                        
                                 type = "text"
                                 placeholder = "Set Channel Name"
+                                minLength="3"
+                                maxLength="15"
                                 required
                             />
                         <div class = "flex flex-row justify-end items-end mt-12 ml-48 mr-4 space-x-3.5 z-50 ">
