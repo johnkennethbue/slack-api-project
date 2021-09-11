@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 
 const Channels = () => {
   const { userHeaders, allChannels, setAllChannels } = useContext(Context);
+  console.log(allChannels)
 
   const rehydrate = () => {
     axios({
@@ -28,7 +29,7 @@ const Channels = () => {
     <Fragment>
       <ul className="p-2">
         {allChannels?.map((channel) => (
-          <li key={channel.id}>
+          <li key={channel.id} className = "text-center bg-gradient-to-r hover:bg-gradient-to-r hover:from-gray-200 hover:to-gray-100 transition ease-in duration-500">
             <Link to={`/${channel.id}/Channel`}>{channel.name}</Link>
           </li>
         ))}

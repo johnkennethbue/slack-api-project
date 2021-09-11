@@ -2,6 +2,7 @@ import { useContext, useState } from "react";
 import axios from "axios";
 import { Context } from "../../App";
 import { useForm } from "react-hook-form";
+import Swal from "sweetalert2";
 
 function AddChannel({showModal, setShowModal}) {
     const { register, handleSubmit} = useForm();
@@ -21,6 +22,7 @@ function AddChannel({showModal, setShowModal}) {
             data: channelData,
         })
         .then((response) => {  
+            Swal.fire('Channel created!', 'Refresh the page to see the new channel.', 'success')
             setShowModal(view => !view);
             console.log(JSON.stringify(response.data));
         })

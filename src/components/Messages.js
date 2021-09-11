@@ -2,6 +2,7 @@ import { useEffect, useContext, Fragment } from "react";
 import axios from "axios";
 import { Context } from "../App";
 
+
 const Messages = (props) => {
   const { userHeaders, channelMessages, setChannelMessages } =
     useContext(Context);
@@ -30,7 +31,7 @@ const Messages = (props) => {
   return (
     <Fragment>
       <div className="">
-        {channelMessages.map((message) => (
+        {channelMessages?.map((message) => (
           <div key={message.id}>{message.body}</div>
         ))}
       </div>
@@ -39,3 +40,4 @@ const Messages = (props) => {
 };
 
 export default Messages;
+
