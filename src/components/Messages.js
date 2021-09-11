@@ -2,12 +2,8 @@ import { useEffect, useContext, Fragment } from "react";
 import axios from "axios";
 import { Context } from "../App";
 
-<<<<<<< HEAD
-const Messages = (props, flag) => {
-=======
 
 const Messages = (props) => {
->>>>>>> 01f5969fc2cdc92c674aa68cedad4e85a05908a0
   const { userHeaders, channelMessages, setChannelMessages } =
     useContext(Context);
 
@@ -30,7 +26,7 @@ const Messages = (props) => {
 
   useEffect(() => {
     rehydrate();
-  }, [flag]);
+  }, [receiver_id, type]);
 
   return (
     <Fragment>
