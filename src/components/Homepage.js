@@ -1,18 +1,37 @@
 import React from "react";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import Channels from "./Channels";
 import Users from "./Users";
 import { Context } from "../App";
 import { Redirect, Route } from "react-router-dom";
 import Chat from "./Chat/Chat";
+import AddChannel from "./Channel/AddChannel";
+import { useHistory } from 'react-router-dom'
+import Swal from "sweetalert2";
 
 function Homepage() {
+  const [showModal, setShowModal] = useState(false);
+  const {setUserHeaders} = useContext(Context);
+
+  const openAddChannelModal = (e) => {
+    e.preventDefault();
+    setShowModal((view) => !view);
+  }
+  const history = useHistory();
+
+  const logOut = () => {
+    history.push('/signin')
+    setUserHeaders(null)
+    Swal.fire('You have been logged out to the session', '', 'info')
+  }
+
   const { userHeaders } = useContext(Context);
   //if userHeader is null -> nothing retrieved from localStorage
   if (!userHeaders) {
     return <Redirect to="/signin" />;
   }
   const displayEmail = userHeaders.uid;
+ 
   return (
     <section className="w-full grid grid-cols-chat grid-rows-chat">
       <div className="bg-pink-700 flex justify-around items-center border border-white">
@@ -22,7 +41,6 @@ function Homepage() {
               xmlns="http://www.w3.org/2000/svg"
               className="h-7 w-7"
               viewBox="0 0 20 20"
-              fill="currentColor"
             >
               <path
                 fillRule="evenodd"
@@ -49,15 +67,8 @@ function Homepage() {
           </button>
         </div>
         <div>
-          <button>
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              className="h-7 w-7"
-              viewBox="0 0 20 20"
-              fill="currentColor"
-            >
-              <path d="M6 10a2 2 0 11-4 0 2 2 0 014 0zM12 10a2 2 0 11-4 0 2 2 0 014 0zM16 12a2 2 0 100-4 2 2 0 000 4z" />
-            </svg>
+          <button onClick = {logOut} className = "hover:underline">
+              Log Out
           </button>
         </div>
       </div>
@@ -81,7 +92,6 @@ function Homepage() {
             {displayEmail}
             <br />
             <span className="text-gray-100">
-              last login date, time/ last user session
             </span>
           </div>
         </div>
@@ -116,6 +126,16 @@ function Homepage() {
             Channels
           </div>
           <Channels />
+          <button
+            className="w-full px-2 border-black bg-gradient-to-r hover:bg-gradient-to-r hover:from-gray-200 hover:to-gray-100 transition ease-in duration-500"
+            onClick={openAddChannelModal}          
+          >
+           ✚ Click here to add channel
+          </button>
+          <AddChannel 
+            showModal = {showModal}
+            setShowModal = {setShowModal}
+          />
         </div>
         <div className="overflow-y-auto">
           <div className="font-bold text-xl text-white bg-pink-900">

@@ -21,7 +21,7 @@ export default function Signin() {
 
   return (
     <div className = "bg-gradient-to-t from-pink-900 to-white-200 h-screen overflow-y-hidden text-black">
-    <form className = "flex flex-col justify-center items-center font-bold  mt-10 ml-10 mr-10 l:flex l:justify-center l:items-center l:z-10 md:flex md:justify-center md:items-center sm:flex sm:justify-center sm:items-center sm:z-20 md:mr-8"
+    <form className = "flex flex-col justify-center items-center font-bold  mt-10 ml-10 mr-10 l:flex l:justify-center l:items-center md:flex md:justify-center md:items-center sm:flex sm:justify-center sm:items-cente md:mr-8"
     onSubmit = {handleSubmit(signinHandler)}>
     <h1 class = "text-center pb-3 text-4xl font-thin">Welcome to Slack API App</h1>
     <h3 class = "text-center pb-10 font-light text-5xl">Sign in to your workspace</h3>
@@ -57,8 +57,8 @@ export default function Signin() {
     <button class = "ml-40 text-gray-300 text-2xl hover:underline"
     onClick={openSignUpModal}>
         Sign up
-        <SignUpForm showModal={showModal} setShowModal={setShowModal} />
     </button>
+    <SignUpForm showModal={showModal} setShowModal={setShowModal} />
     </div>
 </form>
 </div>

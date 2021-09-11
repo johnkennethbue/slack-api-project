@@ -2,11 +2,13 @@ import Swal from "sweetalert2";
 import { useEffect, useState, useRef } from "react";
 import { useForm } from "react-hook-form";
 import axios from "axios";
+import { useHistory } from "react-router";
 
 const SignUpForm = ({ showModal, setShowModal }) => {
   const { register, handleSubmit } = useForm();
   const [newAccount, setNewAccount] = useState({});
   const [errorHandlers, setErrorHandlers] = useState([]);
+
 
   const closeSignUpForm = (e) => {
     e.preventDefault();
@@ -48,23 +50,24 @@ const SignUpForm = ({ showModal, setShowModal }) => {
             "success"
           );
           setNewAccount(userData);
+          setShowModal((view) => !view);
         }
       });
   };
 
   return (
     <>
-      {" "}
+   
       {showModal ? (
         <form>
           <div className="modal-container z-50 fixed w-full h-full top-0 left-0 flex items-center justify-center">
             <div className="modal-overlay absolute w-full h-full bg-black opacity-80">
-              {" "}
+            
             </div>
 
-            <div className="modal-container px-2 mb-60 mt-40 bg-white w-auto h-auto md:max-w-md mx-auto shadow-lg z-50 ">
+            <div className="modal-container px-2 mb-60 mt-40 bg-white w-auto h-auto md:max-w-md mx-auto shadow-lg z-50">
               <div className="modal-close absolute opacity-1 top-0 right-0 cursor-pointer flex flex-col items-center mt-4 mr-4 text-white text-lg z-50"></div>
-              <div className="modal-content py-4 text-left px-6 z-50 text-black">
+              <div className="modal-content py-4 text-left px-6 text-black z-50">
                 <div className="flex justify-end items-center pb-3">
                   <div className="modal-close cursor-pointer z-50">
                     <button className="text-2xl" onClick={closeSignUpForm}>
@@ -101,7 +104,7 @@ const SignUpForm = ({ showModal, setShowModal }) => {
                       required
                     />
 
-                    <div className="flex flex-row justify-end items-end mt-12 ml-48 mr-4 space-x-3.5 z-50 ">
+                    <div className="flex flex-row justify-end items-end mt-12 ml-48 mr-4 space-x-3.5">
                       <button
                         className="text-sm w-full h-auto border-2 border-black px-8 py-2 bg-pink-600"
                         onClick={handleSubmit(signUpFormSubmit)}

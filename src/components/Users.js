@@ -27,7 +27,7 @@ const Users = () => {
     <Fragment>
       <ul className="p-2">
         {allUsers.map((user) => (
-          <li key={user.id}>
+          <li key={user.id} className = "text-center bg-gradient-to-r hover:bg-gradient-to-r hover:from-gray-200 hover:to-gray-100 transition ease-in duration-500">
             <Link to={`/${user.id}/User`}>{user.uid}</Link>
           </li>
         ))}
