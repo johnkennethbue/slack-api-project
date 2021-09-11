@@ -22,6 +22,7 @@ const Channels = () => {
   useEffect(() => {
     rehydrate();
   }, []);
+  console.log(allChannels);
 
   //clicking link will match /:id/:type
   return (
