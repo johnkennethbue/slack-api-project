@@ -6,12 +6,18 @@ import { Context } from "../App";
 import { Redirect, Route } from "react-router-dom";
 import Chat from "./Chat/Chat";
 import AddChannel from "./Channel/AddChannel";
+import InviteUsers from "./Channel/InviteUsers";
 
 function Homepage() {
   const [showModal, setShowModal] = useState(false);
+  const [inviteUserModal, setInviteUserModal] = useState(false);
   const openAddChannelModal = (e) => {
     e.preventDefault();
     setShowModal((view) => !view);
+  }
+  const inviteUsersModal = (e) => {
+    e.preventDefault();
+    setInviteUserModal((view) => !view);
   }
 
   const { userHeaders } = useContext(Context);
@@ -39,7 +45,9 @@ function Homepage() {
           </button>
         </div>
         <div>
-          <button>
+          <button
+          onClick={inviteUsersModal}
+          >
             <svg
               xmlns="http://www.w3.org/2000/svg"
               className="h-7 w-7"
@@ -53,6 +61,10 @@ function Homepage() {
               />
             </svg>
           </button>
+            <InviteUsers 
+            inviteUserModal = {inviteUserModal}
+            setInviteUserModal = {setInviteUserModal}
+            />
         </div>
         <div>
           <button>
